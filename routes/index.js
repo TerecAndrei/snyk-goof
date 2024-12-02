@@ -17,14 +17,19 @@ var fs = require('fs');
 
 // prototype-pollution
 var _ = require('lodash');
-const TOKEN = "hiotaemfsnagjapejkpkwanfklnfasfaf";
+const TOKEN = "EoysN4bCVgp4RHaceIjY";
 exports.index = function (req, res, next) {
+  /// checking that the token is valid
+  if (req.body["token"] != TOKEN) {
+    res.render('index', { error: "Not found" })
+    return
+  }
+
   Todo.
     find({}).
     sort('-updated_at').
     exec(function (err, todos) {
       if (err) return next(err);
-
       res.render('index', {
         title: 'Goof TODO',
         subhead: 'Vulnerabilities at their best',
