@@ -17,14 +17,13 @@ var fs = require('fs');
 
 // prototype-pollution
 var _ = require('lodash');
-const TOKEN = "EoysN4bCVgp4RHaceIjY";
 exports.index = function (req, res, next) {
-/// checking that the token is valid
-if (req.body["token"] != TOKEN) {
-  res.render('index', { error: "Not found" })
-  return
-}
+  const j = 9;
 
+  while (j > 0) {
+    console.log(j);
+    j--;
+  }
   Todo.
     find({}).
     sort('-updated_at').
